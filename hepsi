@@ -1,0 +1,98 @@
+package com.example.deneme;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Switch;
+import android.widget.Toast;
+import android.widget.ToggleButton;
+
+import com.google.android.material.chip.Chip;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+public class MainActivity extends AppCompatActivity {
+RadioButton radioButton;
+RadioGroup rgCinsiyet;
+Chip chipBir,chipIki;
+CheckBox checkBoxOnay;
+ToggleButton toggleButtonKapali;
+Switch switchSes;
+FloatingActionButton floatingActionButton;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        radioButton=findViewById(R.id.radioButton);
+        rgCinsiyet=findViewById(R.id.rgCinsiyet);
+        chipBir=findViewById(R.id.chipBir);
+        chipIki=findViewById(R.id.chipIki);
+        checkBoxOnay=findViewById(R.id.checkBoxOnay);
+        toggleButtonKapali=findViewById(R.id.toggleButtonKapali);
+        switchSes=findViewById(R.id.switchSes);
+        floatingActionButton=findViewById(R.id.floatingActionButton);
+
+        radioButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                String secilen=isChecked? "Seçildi" : "İptal Edildi";
+                Toast.makeText(MainActivity.this, "Radio Button"+secilen, Toast.LENGTH_SHORT).show();
+            }
+        });
+        rgCinsiyet.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                RadioButton secilenButon=findViewById(checkedId);
+                if(secilenButon!=null){
+                    String secilenText=secilenButon.getText().toString();
+                    Toast.makeText(MainActivity.this, secilenText+"Seçildi", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        chipBir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this, "Chip 1 tıklandı", Toast.LENGTH_SHORT).show();
+            }
+        });
+        chipIki.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this, "Chip 2 Tıklandı", Toast.LENGTH_SHORT).show();
+            }
+        });
+        checkBoxOnay.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                String secilenC=isChecked?"Onayladınız":"Onaylamadınız";
+                Toast.makeText(MainActivity.this, "Formu"+secilenC, Toast.LENGTH_SHORT).show();
+            }
+        });
+        toggleButtonKapali.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                String secilen=isChecked?"Açtınız":"Kapadınız";
+                Toast.makeText(MainActivity.this, "İnterneti"+secilen, Toast.LENGTH_SHORT).show();
+            }
+        });
+        switchSes.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                String secilen=isChecked?"Açtınız":"Kapattınız";
+                Toast.makeText(MainActivity.this, "Sesi"+secilen, Toast.LENGTH_SHORT).show();
+            }
+        });
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this, "Faba Basıldı", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
+}
