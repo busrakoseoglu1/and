@@ -1,0 +1,94 @@
+package com.example.tasarimkodlama10;
+ 
+import androidx.appcompat.app.AppCompatActivity;
+ 
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+ 
+public class MainActivity extends AppCompatActivity {
+ 
+    EditText editSayi1,editSayi2;
+    TextView tvSonuc;
+ 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+ 
+        //toplama
+        Button buttonTopla = (Button) findViewById(R.id.button);
+        buttonTopla.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EditText sayi1 = (EditText) findViewById(R.id.editTextNumber1);
+                EditText sayi2 = (EditText) findViewById(R.id.editTextNumber2);
+                TextView sonuc = (TextView) findViewById(R.id.textView3);
+ 
+                int sayi1Int = Integer.parseInt(sayi1.getText().toString());
+                int sayi2Int = Integer.parseInt(sayi2.getText().toString());
+                int sonucInt = sayi1Int + sayi2Int;
+ 
+                sonuc.setText(String.valueOf(sonucInt));
+            }
+        });
+ 
+        //çıkarma
+        Button buttonCikart = (Button) findViewById(R.id.button2);
+        buttonCikart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EditText sayi1 = (EditText) findViewById(R.id.editTextNumber1);
+                EditText sayi2 = (EditText) findViewById(R.id.editTextNumber2);
+                TextView sonuc = (TextView) findViewById(R.id.textView3);
+ 
+                int sayi1Int = Integer.parseInt(sayi1.getText().toString());
+                int sayi2Int = Integer.parseInt(sayi2.getText().toString());
+                int sonucInt = sayi1Int - sayi2Int;
+ 
+                sonuc.setText(String.valueOf(sonucInt));
+            }
+        });
+ 
+        //çarpma
+        Button buttonCarp = (Button) findViewById(R.id.button3);
+        buttonCarp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EditText sayi1 = (EditText) findViewById(R.id.editTextNumber1);
+                EditText sayi2 = (EditText) findViewById(R.id.editTextNumber2);
+                TextView sonuc = (TextView) findViewById(R.id.textView3);
+ 
+                int sayi1Int = Integer.parseInt(sayi1.getText().toString());
+                int sayi2Int = Integer.parseInt(sayi2.getText().toString());
+                int sonucInt = sayi1Int * sayi2Int;
+ 
+                sonuc.setText(String.valueOf(sonucInt));
+            }
+        });
+ 
+ 
+        //bölme
+        Button buttonBol = (Button) findViewById(R.id.button4);
+        buttonBol.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EditText sayi1 = (EditText) findViewById(R.id.editTextNumber1);
+                EditText sayi2 = (EditText) findViewById(R.id.editTextNumber2);
+                TextView sonuc = (TextView) findViewById(R.id.textView3);
+ 
+                int sayi1Int = Integer.parseInt(sayi1.getText().toString());
+                int sayi2Int = Integer.parseInt(sayi2.getText().toString());
+                int sonucInt = sayi1Int / sayi2Int;
+ 
+                sonuc.setText(String.valueOf(sonucInt));
+            }
+        });
+ 
+ 
+ 
+ 
+    }
+}
